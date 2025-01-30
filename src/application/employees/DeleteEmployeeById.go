@@ -1,4 +1,4 @@
-package application
+package employees
 
 import "demo/src/domain"
 

@@ -1,7 +1,7 @@
-package infraestructure
+package employeesControllers
 
 import (
-	"demo/src/application"
+	"demo/src/application/employees"
 	"net/http"
 	"strconv"
 
@@ -9,10 +9,10 @@ import (
 )
 
 type DeleteEmployeeController struct {
-	useCase_dp *application.DeleteEmployeeById
+	useCase_dp *employees.DeleteEmployeeById
 }
 
-func NewDeleteEmployeeController(useCase_dp *application.DeleteEmployeeById) *DeleteEmployeeController {
+func NewDeleteEmployeeController(useCase_dp *employees.DeleteEmployeeById) *DeleteEmployeeController {
 	return &DeleteEmployeeController{useCase_dp: useCase_dp}
 }
 

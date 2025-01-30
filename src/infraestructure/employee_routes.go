@@ -1,15 +1,19 @@
 package infraestructure
 
-import "github.com/gin-gonic/gin"
+import (
+	"demo/src/infraestructure/employeesControllers"
+
+	"github.com/gin-gonic/gin"
+)
 
 type EmployeeRoutes struct {
-	CreateEmployeeController *CreateEmployeeController
-	GetEmployeesController *GetEmployeesController
-	UpdateEmployeeController *UpdateEmployeeController
-	DeleteEmployeeController *DeleteEmployeeController
+	CreateEmployeeController *employeesControllers.CreateEmployeeController
+	GetEmployeesController *employeesControllers.GetEmployeesController
+	UpdateEmployeeController *employeesControllers.UpdateEmployeeController
+	DeleteEmployeeController *employeesControllers.DeleteEmployeeController
 }
 
-func NewEmployeeRoutes(createEmployeeController *CreateEmployeeController,getGetEmployeesController *GetEmployeesController,updateEmployeeController *UpdateEmployeeController, deleteEmployeeController *DeleteEmployeeController) *EmployeeRoutes {
+func NewEmployeeRoutes(createEmployeeController *employeesControllers.CreateEmployeeController,getGetEmployeesController *employeesControllers.GetEmployeesController,updateEmployeeController *employeesControllers.UpdateEmployeeController, deleteEmployeeController *employeesControllers.DeleteEmployeeController) *EmployeeRoutes {
 	return &EmployeeRoutes{
 		CreateEmployeeController: createEmployeeController,
 		GetEmployeesController: getGetEmployeesController,

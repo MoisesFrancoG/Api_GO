@@ -1,8 +1,11 @@
 package main
 
 import (
-	"demo/src/application"
+	"demo/src/application/employees"
+	"demo/src/application/product"
 	"demo/src/infraestructure"
+	"demo/src/infraestructure/employeesControllers"
+	"demo/src/infraestructure/products"
 	"demo/src/infraestructure/repositories"
 	"log"
 
@@ -17,26 +20,26 @@ func main() {
 	productRepo := repositories.NewProductRepository(mysql.DB)
 	employeeRepo := repositories.NewEmployeeRepository(mysql.DB)
 
-	createProduct := application.NewCreateProduct(productRepo)
-	getProducts := application.NewGetProducts(productRepo)
-	updateProduct := application.NewUpdateProduct(productRepo)
-	deleteProduct := application.NewDeleteProduct(productRepo)
+	createProduct := product.NewCreateProduct(productRepo)
+	getProducts := product.NewGetProducts(productRepo)
+	updateProduct := product.NewUpdateProduct(productRepo)
+	deleteProduct := product.NewDeleteProduct(productRepo)
 
-	createEmployee := application.NewCreateEmployee(employeeRepo)
-	getEmployees := application.NewGetAllEmployees(employeeRepo)
-	updateEmployee := application.NewUpdateEmployeeById(employeeRepo)
-	deleteEmployee := application.NewDeleteEmployeeById(employeeRepo)
+	createEmployee := employees.NewCreateEmployee(employeeRepo)
+	getEmployees := employees.NewGetAllEmployees(employeeRepo)
+	updateEmployee := employees.NewUpdateEmployeeById(employeeRepo)
+	deleteEmployee := employees.NewDeleteEmployeeById(employeeRepo)
 
 	
-	createProductController := infraestructure.NewCreateProductController(createProduct)
-	getProductsController := infraestructure.NewGetProductsController(getProducts)
-	updateProductController := infraestructure.NewUpdateProductController(updateProduct)
-	deleteProductController := infraestructure.NewDeleteProductController(deleteProduct)
+	createProductController := products.NewCreateProductController(createProduct)
+	getProductsController := products.NewGetProductsController(getProducts)
+	updateProductController := products.NewUpdateProductController(updateProduct)
+	deleteProductController := products.NewDeleteProductController(deleteProduct)
 
-	createEmployeeController := infraestructure.NewCreateEmployeeController(createEmployee)
-	getEmployeesController := infraestructure.NewGetEmployeesController(getEmployees)
-	updateEmployeeController := infraestructure.NewUpdateEmployeeController(updateEmployee)
-	deleteEmployeeController := infraestructure.NewDeleteEmployeeController(deleteEmployee)
+	createEmployeeController := employeesControllers.NewCreateEmployeeController(createEmployee)
+	getEmployeesController := employeesControllers.NewGetEmployeesController(getEmployees)
+	updateEmployeeController := employeesControllers.NewUpdateEmployeeController(updateEmployee)
+	deleteEmployeeController := employeesControllers.NewDeleteEmployeeController(deleteEmployee)
 
 	router := gin.Default()
 	productRoutes := infraestructure.NewProductRoutes(createProductController, getProductsController, updateProductController,deleteProductController)

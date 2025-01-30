@@ -1,4 +1,4 @@
-package application
+package product
 
 import (
 	"demo/src/domain"

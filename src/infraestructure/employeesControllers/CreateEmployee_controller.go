@@ -1,7 +1,7 @@
-package infraestructure
+package employeesControllers
 
 import (
-	"demo/src/application"
+	"demo/src/application/employees"
 	"demo/src/domain/entities"
 	"net/http"
 
@@ -14,10 +14,10 @@ type CreateEmployeeRequest struct {
 }
 
 type CreateEmployeeController struct {
-	cp application.CreateEmployee
+	cp employees.CreateEmployee
 }
 
-func NewCreateEmployeeController(cp application.CreateEmployee) *CreateEmployeeController {
+func NewCreateEmployeeController(cp employees.CreateEmployee) *CreateEmployeeController {
 	return &CreateEmployeeController{cp: cp}
 }
 

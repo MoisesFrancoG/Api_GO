@@ -1,17 +1,19 @@
 package infraestructure
 
 import (
+	"demo/src/infraestructure/products"
+
 	"github.com/gin-gonic/gin"
 )
 
 type ProductRoutes struct {
-	CreateProductController *CreateProductController
-	GetProductsController   *GetProductsController
-	UpdateProductController *UpdateProductController
-	DeleteProductController *DeleteProductController
+	CreateProductController *products.CreateProductController
+	GetProductsController   *products.GetProductsController
+	UpdateProductController *products.UpdateProductController
+	DeleteProductController *products.DeleteProductController
 }
 
-func NewProductRoutes(cpc *CreateProductController, gpc *GetProductsController,upc *UpdateProductController,dpc *DeleteProductController) *ProductRoutes {
+func NewProductRoutes(cpc *products.CreateProductController, gpc *products.GetProductsController,upc *products.UpdateProductController,dpc *products.DeleteProductController) *ProductRoutes {
 	return &ProductRoutes{
 		CreateProductController: cpc,
 		GetProductsController: gpc,

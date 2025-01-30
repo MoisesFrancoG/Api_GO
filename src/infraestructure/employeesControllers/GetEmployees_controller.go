@@ -1,17 +1,17 @@
-package infraestructure
+package employeesControllers
 
 import (
-	"demo/src/application"
+	"demo/src/application/employees"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type GetEmployeesController struct {
-	useCase_ge *application.GetAllEmployees
+	useCase_ge *employees.GetAllEmployees
 }
 
-func NewGetEmployeesController(useCase_ge *application.GetAllEmployees) *GetEmployeesController {
+func NewGetEmployeesController(useCase_ge *employees.GetAllEmployees) *GetEmployeesController {
 	return &GetEmployeesController{useCase_ge: useCase_ge}
 }
 

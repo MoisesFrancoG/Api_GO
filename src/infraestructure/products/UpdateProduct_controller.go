@@ -1,7 +1,7 @@
-package infraestructure
+package products
 
 import (
-	"demo/src/application"
+	"demo/src/application/product"
 	"demo/src/domain/entities"
 	"net/http"
 	"strconv"
@@ -10,10 +10,10 @@ import (
 )
 
 type UpdateProductController struct {
-	useCase_up *application.UpdateProduct
+	useCase_up *product.UpdateProduct
 }
 
-func NewUpdateProductController(useCase_up *application.UpdateProduct) *UpdateProductController {
+func NewUpdateProductController(useCase_up *product.UpdateProduct) *UpdateProductController {
 	return &UpdateProductController{useCase_up: useCase_up}
 }
 

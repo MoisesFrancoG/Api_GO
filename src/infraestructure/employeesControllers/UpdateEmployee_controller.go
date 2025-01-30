@@ -1,7 +1,7 @@
-package infraestructure
+package employeesControllers
 
 import (
-	"demo/src/application"
+	"demo/src/application/employees"
 	"demo/src/domain/entities"
 	"net/http"
 	"strconv"
@@ -10,10 +10,10 @@ import (
 )
 
 type UpdateEmployeeController struct {
-	useCase_up *application.UpdateEmployeeById
+	useCase_up *employees.UpdateEmployeeById
 }
 
-func NewUpdateEmployeeController(useCase_up *application.UpdateEmployeeById) *UpdateEmployeeController {
+func NewUpdateEmployeeController(useCase_up *employees.UpdateEmployeeById) *UpdateEmployeeController {
 	return &UpdateEmployeeController{useCase_up: useCase_up}
 }
 

@@ -1,17 +1,17 @@
-package infraestructure
+package products
 
 import (
-	"demo/src/application"
+	"demo/src/application/product"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type GetProductsController struct {
-	useCase_gp *application.GetProducts
+	useCase_gp *product.GetProducts
 }
 
-func NewGetProductsController(useCase_gp *application.GetProducts) *GetProductsController {
+func NewGetProductsController(useCase_gp *product.GetProducts) *GetProductsController {
 	return &GetProductsController{useCase_gp: useCase_gp}
 }
 

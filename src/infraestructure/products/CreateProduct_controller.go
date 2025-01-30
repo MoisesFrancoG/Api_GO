@@ -1,7 +1,7 @@
-package infraestructure
+package products
 
 import (
-	"demo/src/application"
+	"demo/src/application/product"
 	"demo/src/domain/entities"
 	"net/http"
 
@@ -14,10 +14,10 @@ type CreateProductRequest struct {
 }
 
 type CreateProductController struct {
-	cp application.CreateProduct
+	cp product.CreateProduct
 }
 
-func NewCreateProductController(cp application.CreateProduct) *CreateProductController {
+func NewCreateProductController(cp product.CreateProduct) *CreateProductController {
 	return &CreateProductController{cp: cp}
 }
 
