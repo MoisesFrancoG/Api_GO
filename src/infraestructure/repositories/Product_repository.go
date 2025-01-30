@@ -14,7 +14,7 @@ func NewProductRepository(db *sql.DB) *ProductRepository {
 	return &ProductRepository{DB: db}
 }
 
-func (repo *ProductRepository) Save(product *entities.Product) error {
+func (repo *ProductRepository) SaveProductWithParams(product *entities.Product) error {
 	query := "INSERT INTO products (name, price) VALUES (?, ?)"
 	_, err := repo.DB.Exec(query, product.Name, product.Price)
 	if err != nil {
@@ -25,7 +25,7 @@ func (repo *ProductRepository) Save(product *entities.Product) error {
 	return nil
 }
 
-func (repo *ProductRepository) GetAll() ([]entities.Product, error) {
+func (repo *ProductRepository) GetAllProducts() ([]entities.Product, error) {
 	query := "SELECT id, name, price FROM products"
 	rows, err := repo.DB.Query(query)
 	if err != nil {
@@ -62,7 +62,7 @@ func (repo *ProductRepository) DeleteById(id int) error {
 	return nil
 }
 
-func (repo *ProductRepository) EditById(id int, updatedProduct *entities.Product) error {
+func (repo *ProductRepository) UpdateById(id int, updatedProduct *entities.Product) error {
 	query := "UPDATE products SET name = ?, price = ? WHERE id = ?"
 	_, err := repo.DB.Exec(query, updatedProduct.Name, updatedProduct.Price, id)
 	if err != nil {

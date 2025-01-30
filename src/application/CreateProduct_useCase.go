@@ -1,18 +1,18 @@
 package application
 
 import (
+	"demo/src/domain"
 	"demo/src/domain/entities"
-	"demo/src/infraestructure/repositories"
 )
 
 type CreateProduct struct {
-	db repositories.ProductRepository
+	productRepository domain.IProduct
 }
 
-func NewCreateProduct(db repositories.ProductRepository) CreateProduct {
-	return CreateProduct{db: db}
+func NewCreateProduct(repo domain.IProduct) CreateProduct {
+	return CreateProduct{productRepository: repo}
 }
 
 func (cp *CreateProduct) Execute(product *entities.Product) error {
-	return cp.db.Save(product)
+	return cp.productRepository.SaveProductWithParams(product)
 }

@@ -1,19 +1,19 @@
 package application
 
 import (
-	"demo/src/infraestructure/repositories"
+	"demo/src/domain"
 )
 
 type DeleteProduct struct {
-	db repositories.ProductRepository
+	productRepository domain.IProduct
 }
 
-func NewDeleteProduct(db repositories.ProductRepository) *DeleteProduct {
-	return &DeleteProduct{db: db}
+func NewDeleteProduct(repo domain.IProduct) *DeleteProduct {
+	return &DeleteProduct{productRepository: repo}
 }
 
 func (dp *DeleteProduct) Execute(id int) error {
-	err := dp.db.DeleteById(id)
+	err := dp.productRepository.DeleteById(id)
 	if err != nil {
 		return err
 	}

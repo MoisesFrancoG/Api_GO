@@ -4,7 +4,7 @@ import "demo/src/domain/entities"
 
 type IProduct interface {
 	GetAllProducts()([]entities.Product,error)
-	SaveProductWithParams(product *entities.Product)
+	SaveProductWithParams(product *entities.Product) error
 	DeleteById(id int) error
 	UpdateById(id int, updatedProduct *entities.Product) error
 }

@@ -9,8 +9,8 @@ import (
 )
 
 type CreateProductRequest struct {
-	Name  string  `json:"name" binding:"required"`
-	Price float32 `json:"price" binding:"required"`
+	Name  string  `json:"name"`
+	Price float32 `json:"price"`
 }
 
 type CreateProductController struct {

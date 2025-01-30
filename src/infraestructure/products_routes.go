@@ -8,13 +8,15 @@ type ProductRoutes struct {
 	CreateProductController *CreateProductController
 	GetProductsController   *GetProductsController
 	UpdateProductController *UpdateProductController
+	DeleteProductController *DeleteProductController
 }
 
-func NewProductRoutes(cpc *CreateProductController, gpc *GetProductsController,upc *UpdateProductController) *ProductRoutes {
+func NewProductRoutes(cpc *CreateProductController, gpc *GetProductsController,upc *UpdateProductController,dpc *DeleteProductController) *ProductRoutes {
 	return &ProductRoutes{
 		CreateProductController: cpc,
 		GetProductsController: gpc,
 		UpdateProductController: upc,
+		DeleteProductController: dpc,
 	}
 }
 
@@ -28,5 +30,8 @@ func (pr *ProductRoutes) SetupRoutes(router *gin.Engine) {
 	})
 	router.PUT("/products/:id", func(c *gin.Context) {
 		pr.UpdateProductController.Execute(c)
+	})
+	router.DELETE("/products/:id",func(c *gin.Context) {
+		pr.DeleteProductController.Execute(c)
 	})
 }
