@@ -72,3 +72,19 @@ func (repo *ProductRepository) UpdateById(id int, updatedProduct *entities.Produ
 	log.Printf("[ProductRepository.EditById] Product with ID %d updated successfully", id)
 	return nil
 }
+
+func (repo *ProductRepository) GetById(id int) (*entities.Product, error) {
+	query := "SELECT id, name, price FROM products WHERE id = ?"
+	row := repo.DB.QueryRow(query, id)
+
+	var product entities.Product
+	err := row.Scan(&product.Id, &product.Name, &product.Price)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, nil // No encontrado
+		}
+		log.Printf("[ProductRepository.GetProductById] Error: %v", err)
+		return nil, err
+	}
+	return &product, nil
+}

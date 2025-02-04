@@ -24,6 +24,7 @@ func main() {
 	getProducts := product.NewGetProducts(productRepo)
 	updateProduct := product.NewUpdateProduct(productRepo)
 	deleteProduct := product.NewDeleteProduct(productRepo)
+	getById := product.NewGetProductById(productRepo)
 
 	createEmployee := employees.NewCreateEmployee(employeeRepo)
 	getEmployees := employees.NewGetAllEmployees(employeeRepo)
@@ -35,6 +36,7 @@ func main() {
 	getProductsController := products.NewGetProductsController(getProducts)
 	updateProductController := products.NewUpdateProductController(updateProduct)
 	deleteProductController := products.NewDeleteProductController(deleteProduct)
+	getByIdController := products.NewGetProductByIdController(getById)
 
 	createEmployeeController := employeesControllers.NewCreateEmployeeController(createEmployee)
 	getEmployeesController := employeesControllers.NewGetEmployeesController(getEmployees)
@@ -42,7 +44,7 @@ func main() {
 	deleteEmployeeController := employeesControllers.NewDeleteEmployeeController(deleteEmployee)
 
 	router := gin.Default()
-	productRoutes := infraestructure.NewProductRoutes(createProductController, getProductsController, updateProductController,deleteProductController)
+	productRoutes := infraestructure.NewProductRoutes(createProductController, getProductsController, updateProductController,deleteProductController,getByIdController)
 	employeeRoutes := infraestructure.NewEmployeeRoutes(createEmployeeController, getEmployeesController,updateEmployeeController,deleteEmployeeController)
 	productRoutes.SetupRoutes(router)
 	employeeRoutes.SetupRoutes(router)

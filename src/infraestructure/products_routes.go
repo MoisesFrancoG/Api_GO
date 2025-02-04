@@ -11,14 +11,16 @@ type ProductRoutes struct {
 	GetProductsController   *products.GetProductsController
 	UpdateProductController *products.UpdateProductController
 	DeleteProductController *products.DeleteProductController
+	GetProductById *products.GetProductByIdController
 }
 
-func NewProductRoutes(cpc *products.CreateProductController, gpc *products.GetProductsController,upc *products.UpdateProductController,dpc *products.DeleteProductController) *ProductRoutes {
+func NewProductRoutes(cpc *products.CreateProductController, gpc *products.GetProductsController,upc *products.UpdateProductController,dpc *products.DeleteProductController,gbd *products.GetProductByIdController) *ProductRoutes {
 	return &ProductRoutes{
 		CreateProductController: cpc,
 		GetProductsController: gpc,
 		UpdateProductController: upc,
 		DeleteProductController: dpc,
+		GetProductById: gbd,
 	}
 }
 
@@ -35,5 +37,9 @@ func (pr *ProductRoutes) SetupRoutes(router *gin.Engine) {
 	})
 	router.DELETE("/products/:id",func(c *gin.Context) {
 		pr.DeleteProductController.Execute(c)
+	})
+
+	router.GET("/products/:id", func(c *gin.Context) { 
+		pr.GetProductById.Execute(c)
 	})
 }
