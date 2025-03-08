@@ -3,6 +3,8 @@ package infraestructure
 import (
 	"demo/src/products/application"
 	"demo/src/products/domain/entities"
+	"demo/src/products/infraestructure/rabbitmq"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -39,6 +41,7 @@ func (cp_c *CreateProductController) Execute(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create product"})
 		return
 	}
-
+	rabbitmq.PublishProduct("Nuevo producto agregado al inventario")
 	c.JSON(http.StatusOK, gin.H{"message": "Product created successfully", "product": product})
+	log.Println("Mensaje enviado a rabbitMQ")
 }
